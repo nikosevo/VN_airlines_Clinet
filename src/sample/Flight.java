@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Arrays;
 
-public class Flight implements Serializable, FlightOperations {
+public class Flight implements Serializable {
 
     private Person seats[][] = {null}; //an double array that represents the seats of the plane
     private int seatsAvailable;
@@ -35,8 +35,4 @@ public class Flight implements Serializable, FlightOperations {
         return "Flight: " + id + " Departure at: " + depart_time + " Available seats: " + seatsAvailable;
     }
 
-    @Override
-    public String getFlightId() throws RemoteException {
-        return id;
-    }
 }

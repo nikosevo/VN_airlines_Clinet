@@ -3,8 +3,7 @@ package sample;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class Person implements Serializable
-{
+public class Person implements Serializable {
     private static final long serialVersionUID = 1234567L;  //This is our serialization Id this must be the same on both ends in order to have proper encoding
 
     private String name;
