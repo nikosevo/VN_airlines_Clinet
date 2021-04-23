@@ -1,12 +1,15 @@
 package sample;
 
+import sample.Interfaces.FlightOperations;
+
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Arrays;
 
-public class Flight implements Serializable {
+public class Flight implements Serializable, FlightOperations {
 
     private Person seats[][] = {null}; //an double array that represents the seats of the plane
     private int seatsAvailable;
@@ -30,5 +33,10 @@ public class Flight implements Serializable {
     public String toString() {
 
         return "Flight: " + id + " Departure at: " + depart_time + " Available seats: " + seatsAvailable;
+    }
+
+    @Override
+    public String getFlightId() throws RemoteException {
+        return id;
     }
 }
