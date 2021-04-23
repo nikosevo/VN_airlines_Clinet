@@ -5,10 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.Interfaces.FlightOperations;
+import sample.Interfaces.Operations;
 
 import java.rmi.Naming;
-import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Main extends Application {
@@ -26,7 +25,7 @@ public class Main extends Application {
 
         try {
             Scanner s = new Scanner(System.in);
-            FlightOperations dirop = (FlightOperations) Naming.lookup("rmi://localhost:1099/valnik");
+            Operations dirop = (Operations) Naming.lookup("rmi://localhost:1099/valnik");
             System.out.println("search flight:");
             Flight f = dirop.getFlightId(s.nextLine());
             System.out.println(f == null ? "user not found" : f);
