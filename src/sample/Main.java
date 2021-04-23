@@ -5,8 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.Interfaces.FlightOperations;
 
+import java.rmi.Naming;
 import java.time.LocalTime;
+import java.util.Scanner;
 
 public class Main extends Application {
 
@@ -20,7 +23,18 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+
+        try {
+            Scanner s = new Scanner(System.in);
+            FlightOperations dirop = (FlightOperations) Naming.lookup("rmi://localhost:1099/valnik");
+            System.out.println("search flight:");
+            Flight f = dirop.getFlightId(s.nextLine());
+            System.out.println(f == null ? "user not found" : f);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
         launch(args);
-        System.out.println(new Flight("123","athens","to", LocalTime.parse("08:20")));
     }
 }

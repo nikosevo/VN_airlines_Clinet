@@ -1,9 +1,6 @@
 package sample;
 
-import sample.Interfaces.FlightOperations;
-
 import java.io.Serializable;
-import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -37,4 +34,5 @@ public class Flight implements Serializable {
         return "Flight: " + id + " Departure at: " + depart_time + " Available seats: " + seatsAvailable;
     }
 
+    public String getId(){return id;}
 }
