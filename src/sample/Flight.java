@@ -18,7 +18,7 @@ public class Flight implements Serializable {
     private LocalTime depart_time;
     private LocalDate depart_date;
 
-    Flight(String id, String from, String to,LocalTime depart_time){
+    Flight(String id, String from, String to, LocalTime depart_time, LocalDate depart_date){
         this.id = id;
         this.from = from;
         this.to = to;
@@ -30,11 +30,19 @@ public class Flight implements Serializable {
 
     }
 
+    public void setpersonto(int x,int y,Person p)
+    {
+        this.seats[x][y]=p;
+    }
+
     @Override
     public String toString() {
 
-        return "Flight: " + id + " Departure at: " + depart_time + " Available seats: " + seatsAvailable;
+        return "Flight: " + id + " Departure at: " + depart_time + " Available seats: " + seatsAvailable + " from: " + from + " To: " + to;
     }
 
     public String getId(){return id;}
+    public String getfrom(){return from;}
+    public String getTo(){return to;}
+    public LocalDate getDepart_date(){return depart_date;}
 }
