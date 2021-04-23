@@ -11,6 +11,8 @@ import java.util.Arrays;
 
 public class Flight implements Serializable {
 
+    private static final long serialVersionUID = -1234567L;
+
     private Person seats[][] = {null}; //an double array that represents the seats of the plane
     private int seatsAvailable;
     private String id;
