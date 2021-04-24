@@ -4,6 +4,7 @@ import sample.Flight;
 import sample.Interfaces.Operations;
 
 import java.rmi.Naming;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,11 +22,11 @@ public class Handler {
         return f;
     }
 
-    public ArrayList<Flight> getFlightsWith(String cityFrom, String cityTo) {
+    public ArrayList<Flight> getFlightsWith(String cityFrom, String cityTo,LocalDate date) {
         ArrayList<Flight> tempList = new ArrayList<Flight>();
         try {
             Operations dirop = (Operations) Naming.lookup("rmi://localhost:1099/valnik");
-             tempList = dirop.getFlightWith("samos", "athens");
+             tempList = dirop.getFlightWith(cityFrom, cityTo, date);
         } catch (Exception e) {
             System.out.println(e);
         }

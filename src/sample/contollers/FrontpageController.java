@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import sample.Flight;
 import sample.Handler;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class FrontpageController {
@@ -48,8 +49,9 @@ public class FrontpageController {
     public void search(){
         String cityFrom = fromText.getText();
         String cityTo = toText.getText();
+        LocalDate date = datePicker.getValue();
         tempList.clear();
-        tempList = handler.getFlightsWith(cityFrom,cityTo);
+        tempList = handler.getFlightsWith(cityFrom,cityTo,date);
         updateList();
     }
     private void updateList(){
