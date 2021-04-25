@@ -3,30 +3,45 @@ package sample;
 import sample.Flight;
 import sample.Interfaces.Operations;
 
+import java.net.MalformedURLException;
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Handler {
 
+    //this is our variable where we will story our connection to the server
+    Operations fromOperations;
+    public Handler() {
+        try {
+            fromOperations = (Operations) Naming.lookup("rmi://localhost:1099/valnik");
+        } catch (NotBoundException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 
     public Flight getFlight(String id){
         Flight f = null;
         try {
-            Operations dirop = (Operations) Naming.lookup("rmi://localhost:1099/valnik");
-            f = dirop.getFlightId(id);
+            f = fromOperations.getFlightId(id);
         } catch (Exception e) {
             System.out.println(e);
         }
         return f;
     }
 
+    //since this method is called from the controller we need to return the list
     public ArrayList<Flight> getFlightsWith(String cityFrom, String cityTo,LocalDate date) {
         ArrayList<Flight> tempList = new ArrayList<Flight>();
         try {
-            Operations dirop = (Operations) Naming.lookup("rmi://localhost:1099/valnik");
-             tempList = dirop.getFlightWith(cityFrom, cityTo, date);
+             tempList = fromOperations.getFlightWith(cityFrom, cityTo, date);
         } catch (Exception e) {
             System.out.println(e);
         }
