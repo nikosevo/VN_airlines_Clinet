@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="446.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="446.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.contollers.BookPageController">
    <children>
       <TextField layoutX="47.0" layoutY="81.0" promptText="name" />
       <TextField layoutX="47.0" layoutY="142.0" promptText="email" />
-      <TextField layoutX="47.0" layoutY="207.0" promptText="id" />
+      <TextField layoutX="47.0" layoutY="207.0" promptText="age" />
       <TextField layoutX="47.0" layoutY="269.0" promptText="phone num" />
-      <Button layoutX="46.0" layoutY="327.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: green;" text="book now " textFill="WHITE" />
+      <Button fx:id="bookBtn" layoutX="46.0" layoutY="327.0" mnemonicParsing="false" onAction="#bookNow" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: green;" text="book now " textFill="WHITE" />
       <GridPane layoutX="268.0" layoutY="25.0" prefHeight="389.0" prefWidth="125.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -92,5 +92,6 @@
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="106.0" text="5" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="12" />
          </children>
       </GridPane>
+      <Button layoutX="96.0" layoutY="372.0" mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.scene.control.Alert;
 import sample.Flight;
 import sample.Interfaces.Operations;
 
@@ -46,6 +47,22 @@ public class Handler {
             System.out.println(e);
         }
         return tempList;
+
+    }
+
+    public void booknow(int x, int y, String name, String email, String age,String flightId){
+        boolean an = false;
+        try {
+            an = fromOperations.checkAvailability(flightId,x,y,new Person(name,email,age,"samos"));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        if(an == false){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Alert Message");
+            alert.show();
+        }
+
 
     }
 }

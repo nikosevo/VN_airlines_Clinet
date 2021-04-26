@@ -1,7 +1,6 @@
 package sample.contollers;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -13,18 +12,8 @@ public class BookPageController {
 
     Handler handler;
 
-    BookPageController(Handler handler){
-        this.handler = handler;
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("../fxmls/bookPage.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("My New Stage Title");
-            stage.setScene(new Scene(root, 450, 450));
-            stage.show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
 
+    public void bookNow(){
+        handler.booknow(2,1,"nikos","nikos@hotmail.com","20","123");
     }
 }

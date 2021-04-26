@@ -52,7 +52,18 @@ public class FrontpageController {
         updateList();
     }
     public void bookFlight(){
-        new BookPageController(handler);
+
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("../fxmls/BookPage.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("notitle");
+            stage.setScene(new Scene(root, 450, 450));
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
     public void search(){
