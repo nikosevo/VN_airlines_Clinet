@@ -1,13 +1,18 @@
 package sample.contollers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sample.Flight;
 import sample.Handler;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -48,6 +53,7 @@ public class FrontpageController {
     }
     public void bookFlight(){
         new BookPageController(handler);
+
     }
     public void search(){
         String cityFrom = fromText.getText();
