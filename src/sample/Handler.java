@@ -54,6 +54,7 @@ public class Handler {
         boolean an = false;
         try {
             an = fromOperations.checkAvailability(flightId,x,y,new Person(name,email,age,"samos"));
+            System.out.println(an);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
