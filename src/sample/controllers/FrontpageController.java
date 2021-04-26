@@ -54,8 +54,11 @@ public class FrontpageController {
     public void bookFlight(){
 
         try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("../fxmls/BookPage.fxml"));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/bookPage.fxml"));
+            Parent root = loader.load();
+            BookPageController c = loader.getController();
+            c.setHandler(handler);
             Stage stage = new Stage();
             stage.setTitle("notitle");
             stage.setScene(new Scene(root, 450, 450));

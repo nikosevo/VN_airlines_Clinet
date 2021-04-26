@@ -10,4 +10,7 @@ public class BookPageController {
     public void bookNow(){
         handler.booknow(2,1,"nikos","nikos@hotmail.com","20","123");
     }
+
+
+    public void setHandler(Handler handler){this.handler = handler;}
 }
