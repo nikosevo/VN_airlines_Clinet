@@ -46,6 +46,9 @@ public class FrontpageController {
         tempList.add(f);
         updateList();
     }
+    public void bookFlight(){
+        new BookPageController(handler);
+    }
     public void search(){
         String cityFrom = fromText.getText();
         String cityTo = toText.getText();
