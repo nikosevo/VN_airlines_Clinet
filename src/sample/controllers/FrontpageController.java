@@ -61,7 +61,7 @@ public class FrontpageController {
             BookPageController c = loader.getController();
             c.setHandler(handler);
             ArrayList<String> tmp = new ArrayList<>();
-            tmp.add("11");tmp.add("01");tmp.add("12");
+            tmp.add("1-1");tmp.add("3-1");tmp.add("1-4");
             c.setGrid(tmp);
             Stage stage = new Stage();
             stage.setTitle("notitle");
