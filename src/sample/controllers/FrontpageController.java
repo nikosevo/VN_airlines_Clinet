@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import sample.Flight;
 import sample.Handler;
@@ -59,9 +60,12 @@ public class FrontpageController {
             Parent root = loader.load();
             BookPageController c = loader.getController();
             c.setHandler(handler);
+            ArrayList<String> tmp = new ArrayList<>();
+            tmp.add("11");tmp.add("01");tmp.add("12");
+            c.setGrid(tmp);
             Stage stage = new Stage();
             stage.setTitle("notitle");
-            stage.setScene(new Scene(root, 450, 450));
+            stage.setScene(new Scene(root, 1111, 444));
             stage.show();
         }
         catch (IOException e) {
