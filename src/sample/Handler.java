@@ -66,4 +66,13 @@ public class Handler {
 
 
     }
+
+    public ArrayList<String> getNonAvailable(String s) {
+        try {
+            return fromOperations.occupiedSeats(s);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

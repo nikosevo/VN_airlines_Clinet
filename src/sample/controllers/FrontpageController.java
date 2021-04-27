@@ -60,8 +60,7 @@ public class FrontpageController {
             Parent root = loader.load();
             BookPageController c = loader.getController();
             c.setHandler(handler);
-            ArrayList<String> tmp = new ArrayList<>();
-            tmp.add("1-1");tmp.add("3-1");tmp.add("1-4");
+            ArrayList<String> tmp = handler.getNonAvailable("144");
             c.setGrid(tmp);
             Stage stage = new Stage();
             stage.setTitle("notitle");

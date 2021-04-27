@@ -26,14 +26,15 @@ public class Flight implements Serializable
         this.to = to;
         this.depart_time = depart_time;
         this.depart_date = depart_date;
-        seats = new Person[4][25];
-        Arrays.fill(seats, null);
+        seats = new Person[25][4];
+        //Arrays.fill(seats, null);
         seatsAvailable = 100; // since all the seats are available at the beginning
 
     }
 
     public boolean checkseat(int x, int y)
     {
+
         if (seats[x][y] == null)
         {
             return true;
@@ -46,6 +47,24 @@ public class Flight implements Serializable
     public void setpersonto(int x, int y, Person p)
     {
         this.seats[x][y] = p;
+    }
+
+    public Person checkreservation(String name)
+    {
+        for (int i = 0; i < 25; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (seats[i][j] != null)
+                {
+                    if (seats[i][j].getName().equals(name))
+                    {
+                        return seats[i][j];
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     @Override
