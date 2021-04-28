@@ -1,7 +1,6 @@
 package sample;
 
 import javafx.scene.control.Alert;
-import sample.Flight;
 import sample.Interfaces.Operations;
 
 import java.net.MalformedURLException;
@@ -10,7 +9,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Handler {
 
@@ -50,10 +48,10 @@ public class Handler {
 
     }
 
-    public void booknow(int x, int y, String name, String email, String age,String flightId){
+   public void bookPermenantly(String flightId , ArrayList<String> wishList , ArrayList<Person> person ){
         boolean an = false;
         try {
-            an = fromOperations.checkAvailability(flightId,x,y,new Person(name,email,age,"samos"));
+            an = fromOperations.booknow(flightId,wishList,person);
             System.out.println(an);
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -63,8 +61,19 @@ public class Handler {
             alert.setContentText("Alert Message");
             alert.show();
         }
+    }
 
-
+    public void bookTemporarily(String flightId , ArrayList<String> wishList){
+        boolean an = false;
+        try{
+            an = fromOperations.bookTemporarily(flightId,wishList);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        if(an == false)
+            System.out.println("cannot do that");
+        else
+            System.out.println("seat available");
     }
 
     public ArrayList<String> getNonAvailable(String s) {
@@ -74,5 +83,24 @@ public class Handler {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public ArrayList<String> getTempNonAvailable(String flightid) {
+        try{
+            return fromOperations.tempOccupiedSeats(flightid);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public boolean checkAvailability(String flightId, ArrayList<String> wishlist) {
+        boolean an = false;
+        try{
+            an = fromOperations.checkAvailability(flightId,wishlist);
+        }catch (RemoteException e){
+            e.printStackTrace();
+        }
+        return an;
     }
 }

@@ -59,9 +59,7 @@ public class FrontpageController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/bookPage.fxml"));
             Parent root = loader.load();
             BookPageController c = loader.getController();
-            c.setHandler(handler);
-            ArrayList<String> tmp = handler.getNonAvailable("144");
-            c.setGrid(tmp);
+            c.initialize(handler,idSearch.getText());
             Stage stage = new Stage();
             stage.setTitle("notitle");
             stage.setScene(new Scene(root, 1111, 444));

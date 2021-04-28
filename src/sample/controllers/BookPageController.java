@@ -9,6 +9,7 @@ import javafx.scene.layout.GridPane;
 import sample.Handler;
 import sample.Person;
 
+import javax.net.ssl.SNIHostName;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -20,11 +21,22 @@ public class BookPageController {
     Handler handler;
     private boolean clicked[][];
     private ArrayList<String> notAvailable;
+    private ArrayList<String> temporarilyNotAvailable;
+    protected String flightid;  //this is protected so that the fxml can see it
 
-
-    public void setGrid(ArrayList<String> notAvailableSeats){
+    //kinna like a constructor but is acrivated after the constructor so we can create the obj and then call this method
+    @FXML
+    public void initialize(Handler handler,String flightId) {
+        this.handler = handler;
+        this.flightid = flightId;
         setClicked();
-        this.notAvailable = notAvailableSeats;
+        setGrid();
+    }
+    public void setGrid(){
+
+
+        notAvailable = handler.getNonAvailable(flightid);;
+        temporarilyNotAvailable = handler.getTempNonAvailable(flightid);
 
         for(int i = 0 ; i < 26 ; i++){
             for(int j = 0 ; j < 5 ; j++){
@@ -35,14 +47,38 @@ public class BookPageController {
                 String btnId = i + "-" + j;
                 Button temp_btn = newSeatButton(i,j);
                 grid.add(temp_btn,i,j,1,1);
-                for(String seats : notAvailableSeats){
-                    if(seats.equals(btnId)) {
+                for(String seats : notAvailable){
+                    if(seats.equals(btnId))
                         temp_btn.setStyle("-fx-background-color: red");
+                }
+                for(String seats : temporarilyNotAvailable){
+                    if(seats.equals(btnId)){
+                        temp_btn.setStyle("-fx-background-color: yellow");
                     }
-
-
                 }
             }
+        }
+    }
+    //lets proceed to booking by taking all the true values in the clicked list and senting a request to the server to check availability(usually this will work but maybe someone was faster than you and booked the same seat just before u sent the request)
+    public void proceedToBooking(){
+        ArrayList<String> wishlist = new ArrayList<String>();
+        for(int i = 0 ; i < 25 ; i++){
+            for(int j= 0 ; j <4 ; j++){
+                if(clicked[i][j] == true){
+                    wishlist.add((i+1)+"-"+(j+1));
+                }
+            }
+        }
+
+
+        if(handler.checkAvailability(flightid ,wishlist)){
+             ArrayList<Person> tmp = new ArrayList<>();
+
+            //collect data from the user via the ui
+
+            //thats for later after we collect all our data from the uesr
+            tmp.add(new Person("name","email","age","startcity"));
+            handler.bookTemporarily(flightid ,wishlist);
         }
     }
     private void setClicked(){
@@ -95,5 +131,5 @@ public class BookPageController {
 
     }
 
-    public void setHandler(Handler handler){this.handler = handler;}
+
 }

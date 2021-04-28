@@ -69,19 +69,19 @@
                <font>
                   <Font name="Eras Light ITC" size="22.0" />
                </font></Label>
-            <Label alignment="CENTER" layoutX="10.0" layoutY="22.0" text="D" GridPane.rowIndex="4">
+            <Label alignment="CENTER" layoutX="10.0" layoutY="22.0" prefHeight="27.0" prefWidth="38.0" text="D" GridPane.rowIndex="4">
                <font>
                   <Font name="Eras Light ITC" size="22.0" />
                </font></Label>
-            <Label alignment="CENTER" layoutX="10.0" layoutY="22.0" text="C" GridPane.rowIndex="3">
+            <Label alignment="CENTER" layoutX="10.0" layoutY="22.0" prefHeight="27.0" prefWidth="36.0" text="C" GridPane.rowIndex="3">
                <font>
                   <Font name="Eras Light ITC" size="22.0" />
                </font></Label>
-            <Label alignment="CENTER" layoutX="10.0" layoutY="22.0" text="B" GridPane.rowIndex="2">
+            <Label alignment="CENTER" layoutX="10.0" layoutY="22.0" prefHeight="27.0" prefWidth="36.0" text="B" GridPane.rowIndex="2">
                <font>
                   <Font name="Eras Light ITC" size="22.0" />
                </font></Label>
-            <Label alignment="CENTER" layoutX="10.0" layoutY="22.0" text="A" GridPane.rowIndex="1">
+            <Label alignment="CENTER" layoutX="10.0" layoutY="22.0" prefHeight="27.0" prefWidth="36.0" text="A" GridPane.rowIndex="1">
                <font>
                   <Font name="Eras Light ITC" size="22.0" />
                </font></Label>
@@ -175,9 +175,9 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <Button layoutX="22.0" layoutY="376.0" mnemonicParsing="false" text="procced to booking" />
-      <Button layoutX="176.0" layoutY="376.0" mnemonicParsing="false" text="cancel" />
-      <Label layoutX="284.0" layoutY="372.0" prefHeight="33.0" prefWidth="765.0" text="Note: The seats you choose here are going to be availble for the next 3 minutes. After that you will need to do the process from the beginning" />
+      <Button fx:id="proceed" layoutX="22.0" layoutY="376.0" mnemonicParsing="false" onAction="#proceedToBooking" text="proceed to booking" />
+      <Button layoutX="168.0" layoutY="376.0" mnemonicParsing="false" text="cancel" />
+      <Label layoutX="248.0" layoutY="372.0" prefHeight="33.0" prefWidth="765.0" text="Note: The seats you choose here are going to be availble for the next 3 minutes. After that you will need to do the process from the beginning" />
    </children>
    <padding>
       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />

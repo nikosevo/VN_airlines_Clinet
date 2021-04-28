@@ -6,8 +6,8 @@ import sample.Person;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface Operations extends Remote
 {
@@ -17,9 +17,15 @@ public interface Operations extends Remote
 
     public ArrayList<Flight> getFlightWith(String cityfrom, String cityto, LocalDate date) throws RemoteException;
 
-    public Boolean checkAvailability(String flightId, int x, int y, Person p) throws RemoteException;
+    public Boolean checkAvailability(String flightId,ArrayList<String> list) throws RemoteException;
+
+    public Boolean bookTemporarily(String flightId,ArrayList<String> wishlist) throws  RemoteException;
 
     public Person getPersoninfo(String id, String name) throws RemoteException;
 
     public ArrayList<String> occupiedSeats(String id) throws RemoteException;
+
+    public ArrayList<String> tempOccupiedSeats(String id) throws RemoteException;
+
+    public Boolean booknow(String flightId , ArrayList<String> wishlist , ArrayList<Person> person) throws RemoteException;
 }
