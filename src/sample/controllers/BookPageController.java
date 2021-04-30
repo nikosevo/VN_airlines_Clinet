@@ -64,7 +64,7 @@ public class BookPageController {
         ArrayList<String> wishlist = new ArrayList<String>();
         for(int i = 0 ; i < 25 ; i++){
             for(int j= 0 ; j <4 ; j++){
-                if(clicked[i][j] == true){
+                if(clicked[i][j]){
                     wishlist.add((i+1)+"-"+(j+1));
                 }
             }
@@ -75,8 +75,7 @@ public class BookPageController {
              ArrayList<Person> tmp = new ArrayList<>();
 
             //collect data from the user via the ui
-
-            //thats for later after we collect all our data from the uesr
+            //thats for later after we collect all our data from the user
             tmp.add(new Person("name","email","age","startcity"));
             handler.bookTemporarily(flightid ,wishlist);
         }
