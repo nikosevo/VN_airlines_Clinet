@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.controllers.NewPersonPageController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="286.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.NewPersonPageController">
+   <children>
+      <TextField layoutX="74.0" layoutY="95.0" promptText="name" />
+      <TextField layoutX="268.0" layoutY="95.0" promptText="email" />
+      <TextField layoutX="74.0" layoutY="148.0" promptText="age" />
+      <TextField layoutX="74.0" layoutY="198.0" promptText="phone number" />
+      <Button layoutX="223.0" layoutY="247.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="46.0" text="next" />
+      <Label layoutX="74.0" layoutY="44.0" text="Flight number: 144 seat A11" />
+      <TextArea layoutX="268.0" layoutY="148.0" prefHeight="75.0" prefWidth="149.0" promptText="details " />
+   </children>
 </AnchorPane>

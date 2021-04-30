@@ -3,13 +3,18 @@ package sample.controllers;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import sample.Handler;
 import sample.Person;
 
 import javax.net.ssl.SNIHostName;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -74,10 +79,24 @@ public class BookPageController {
         if(handler.checkAvailability(flightid ,wishlist)){
              ArrayList<Person> tmp = new ArrayList<>();
 
-            //collect data from the user via the ui
             //thats for later after we collect all our data from the user
             //tmp.add(new Person("name","email","age","startcity"));
             handler.bookTemporarily(flightid ,wishlist);
+
+            //collect data from user vie the ui
+            try {
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/newPersonPage.fxml"));
+                Parent root = loader.load();
+                NewPersonPageController newperson = loader.getController();
+                Stage stage = new Stage();
+                stage.setTitle("no other title");
+                stage.setScene(new Scene(root, 500, 500));
+                stage.show();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
     private void setClicked(){
