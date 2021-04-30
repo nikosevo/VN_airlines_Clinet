@@ -48,10 +48,10 @@ public class Handler {
 
     }
 
-   public void bookPermenantly(String flightId , ArrayList<String> wishList , ArrayList<Person> persons ){
+   public void bookPermenantly(String flightId , String seat ,Person person ){
         boolean an = false;
         try {
-            an = fromOperations.booknow(flightId,wishList,persons);
+            an = fromOperations.booknow(flightId,seat,person);
             System.out.println(an);
         } catch (RemoteException e) {
             e.printStackTrace();

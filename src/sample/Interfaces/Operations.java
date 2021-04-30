@@ -2,12 +2,10 @@ package sample.Interfaces;
 
 import sample.Flight;
 import sample.Person;
-
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public interface Operations extends Remote
 {
@@ -27,5 +25,5 @@ public interface Operations extends Remote
 
     public ArrayList<String> tempOccupiedSeats(String id) throws RemoteException;
 
-    public Boolean booknow(String flightId , ArrayList<String> wishlist , ArrayList<Person> person) throws RemoteException;
+    public Boolean booknow(String flightId , String seat , Person person) throws RemoteException;
 }

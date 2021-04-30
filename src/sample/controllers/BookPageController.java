@@ -44,7 +44,6 @@ public class BookPageController
     public void setGrid()
     {
 
-
         notAvailable = handler.getNonAvailable(flightid);
 
         temporarilyNotAvailable = handler.getTempNonAvailable(flightid);
@@ -98,18 +97,13 @@ public class BookPageController
                 System.out.println(wishlist.size() + "size");
                 for (int i = 0; i < wishlist.size(); i++)
                 {
-                    newpersonWindow();
-
+                    newpersonWindow(wishlist,i);
                 }
-                System.out.println(wishlist);   //here smth might break todo
-                System.out.println(wishlist.size() + " " + onlyForNewPersons.size());  //TODO DIFFERENT SIZE WHICH IS WRONG
-                handler.bookPermenantly(flightid, wishlist, onlyForNewPersons);
-
             }
         }
     }
 
-    private void newpersonWindow()
+    private void newpersonWindow(ArrayList<String> wishList , int i)
     {
         try
         {
@@ -117,11 +111,13 @@ public class BookPageController
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/newPersonPage.fxml"));
             Parent root = loader.load();
             NewPersonPageController newperson = loader.getController();
-            newperson.inject(this);
+            newperson.initialize(handler , flightid , wishList.get(i));
             Stage stage = new Stage();
             stage.setTitle("no other title");
             stage.setScene(new Scene(root, 500, 500));
             stage.show();
+
+
 
         } catch (IOException e)
         {
