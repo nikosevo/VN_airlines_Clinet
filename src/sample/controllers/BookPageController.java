@@ -76,7 +76,7 @@ public class BookPageController {
 
             //collect data from the user via the ui
             //thats for later after we collect all our data from the user
-            tmp.add(new Person("name","email","age","startcity"));
+            //tmp.add(new Person("name","email","age","startcity"));
             handler.bookTemporarily(flightid ,wishlist);
         }
     }
