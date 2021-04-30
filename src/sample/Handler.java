@@ -63,17 +63,14 @@ public class Handler {
         }
     }
 
-    public void bookTemporarily(String flightId , ArrayList<String> wishList){
+    public boolean bookTemporarily(String flightId , ArrayList<String> wishList){
         boolean an = false;
         try{
             an = fromOperations.bookTemporarily(flightId,wishList);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        if(an == false)
-            System.out.println("cannot do that");
-        else
-            System.out.println("seat available");
+        return an;
     }
 
     public ArrayList<String> getNonAvailable(String s) {
