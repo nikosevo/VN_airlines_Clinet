@@ -18,7 +18,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class BookPageController {
+public class BookPageController
+{
 
     @FXML
     private GridPane grid;
@@ -32,120 +33,156 @@ public class BookPageController {
 
     //kinna like a constructor but is acrivated after the constructor so we can create the obj and then call this method
     @FXML
-    public void initialize(Handler handler,String flightId) {
+    public void initialize(Handler handler, String flightId)
+    {
         this.handler = handler;
         this.flightid = flightId;
         setClicked();
         setGrid();
     }
-    public void setGrid(){
+
+    public void setGrid()
+    {
 
 
-        notAvailable = handler.getNonAvailable(flightid);;
+        notAvailable = handler.getNonAvailable(flightid);
+
         temporarilyNotAvailable = handler.getTempNonAvailable(flightid);
 
-        for(int i = 0 ; i < 26 ; i++){
-            for(int j = 0 ; j < 5 ; j++){
+        for (int i = 0; i < 26; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
 
-                if(i==0 || j==0)
-                    continue;
+                if (i == 0 || j == 0) continue;
 
                 String btnId = i + "-" + j;
-                Button temp_btn = newSeatButton(i,j);
-                grid.add(temp_btn,i,j,1,1);
-                for(String seats : notAvailable){
-                    if(seats.equals(btnId))
-                        temp_btn.setStyle("-fx-background-color: red");
+                Button temp_btn = newSeatButton(i, j);
+                grid.add(temp_btn, i, j, 1, 1);
+                for (String seats : notAvailable)
+                {
+                    if (seats.equals(btnId)) temp_btn.setStyle("-fx-background-color: red");
                 }
-                for(String seats : temporarilyNotAvailable){
-                    if(seats.equals(btnId)){
+                for (String seats : temporarilyNotAvailable)
+                {
+                    if (seats.equals(btnId))
+                    {
                         temp_btn.setStyle("-fx-background-color: yellow");
                     }
                 }
             }
         }
     }
+
     //lets proceed to booking by taking all the true values in the clicked list and senting a request to the server to check availability(usually this will work but maybe someone was faster than you and booked the same seat just before u sent the request)
-    public void proceedToBooking(){
+    public void proceedToBooking()
+    {
         ArrayList<String> wishlist = new ArrayList<String>();
-        for(int i = 0 ; i < 25 ; i++){
-            for(int j= 0 ; j <4 ; j++){
-                if(clicked[i][j]){
-                    wishlist.add((i+1)+"-"+(j+1));
+        for (int i = 0; i < 25; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (clicked[i][j])
+                {
+                    wishlist.add((i + 1) + "-" + (j + 1));
                 }
             }
         }
+        if (handler.checkAvailability(flightid, wishlist))
+        {
+            if (handler.bookTemporarily(flightid, wishlist))
+            {
+                //collect data from user vie the ui
+                //TODO THIS NEED TO BE FIXED FIRSTLY WE TAKE THE INFO FROM THE USER AND PROCEED ONLY WHEN HE HAS FILLED THE WINDOWS
+                //WITH HIS INFO
+                System.out.println(wishlist.size() + "size");
+                for (int i = 0; i < wishlist.size(); i++)
+                {
+                    newpersonWindow();
 
+                }
+                System.out.println(wishlist);   //here smth might break todo
+                System.out.println(wishlist.size() + " " + onlyForNewPersons.size());  //TODO DIFFERENT SIZE WHICH IS WRONG
+                handler.bookPermenantly(flightid, wishlist, onlyForNewPersons);
 
-        if(handler.checkAvailability(flightid ,wishlist)){
-             ArrayList<Person> tmp = new ArrayList<>();
-
-            //thats for later after we collect all our data from the user
-            //tmp.add(new Person("name","email","age","startcity"));
-            handler.bookTemporarily(flightid ,wishlist);
-
-            //collect data from user vie the ui
-            try {
-
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/newPersonPage.fxml"));
-                Parent root = loader.load();
-                NewPersonPageController newperson = loader.getController();
-                newperson.inject(this);
-                Stage stage = new Stage();
-                stage.setTitle("no other title");
-                stage.setScene(new Scene(root, 500, 500));
-                stage.show();
-            }
-            catch (IOException e) {
-                e.printStackTrace();
             }
         }
     }
 
-    public void addPersonToTempList(Person p){
+    private void newpersonWindow()
+    {
+        try
+        {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/newPersonPage.fxml"));
+            Parent root = loader.load();
+            NewPersonPageController newperson = loader.getController();
+            newperson.inject(this);
+            Stage stage = new Stage();
+            stage.setTitle("no other title");
+            stage.setScene(new Scene(root, 500, 500));
+            stage.show();
+
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void addPersonToTempList(Person p)
+    {
         onlyForNewPersons.add(p);
         System.out.println(p);
     }
-    private void setClicked(){
+
+    private void setClicked()
+    {
         clicked = new boolean[25][4];
 
-        for(int i = 0 ; i < 25 ; i++){
-            for(int j = 0 ; j<4 ; j++){
+        for (int i = 0; i < 25; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
                 clicked[i][j] = false;
             }
         }
     }
-    private Button newSeatButton(int i , int j){
+
+    private Button newSeatButton(int i, int j)
+    {
         Button btn = new Button();
         btn.setStyle("-fx-background-color: green");
         btn.setPrefWidth(40);
-        btn.setId(i+"-"+j);
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+        btn.setId(i + "-" + j);
+        btn.setOnAction(new EventHandler<ActionEvent>()
+        {
 
             @Override
-            public void handle(ActionEvent event) {
+            public void handle(ActionEvent event)
+            {
                 String id = btn.getId();
-                for(String btnId : notAvailable)
-                    if(id.equals(btnId))
-                        return;
+                for (String btnId : notAvailable)
+                    if (id.equals(btnId)) return;
                 String[] parts = id.split("-");
                 String part1 = parts[0];
                 String part2 = parts[1];
 
-                try{
+                try
+                {
                     int i = Integer.parseInt(part1);
                     int j = Integer.parseInt(part2);
 
-                }
-                catch (NumberFormatException ex){
+                } catch (NumberFormatException ex)
+                {
                     ex.printStackTrace();
                 }
-                if(clicked[i-1][j-1] == false) {
-                    clicked[i-1][j-1] = true;
+                if (clicked[i - 1][j - 1] == false)
+                {
+                    clicked[i - 1][j - 1] = true;
                     btn.setStyle("-fx-background-color: orange");
-                }
-                else{
-                    clicked[i-1][j-1] = false;
+                } else
+                {
+                    clicked[i - 1][j - 1] = false;
                     btn.setStyle("-fx-background-color: green");
                 }
 
