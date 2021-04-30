@@ -27,6 +27,7 @@ public class BookPageController {
     private boolean clicked[][];
     private ArrayList<String> notAvailable;
     private ArrayList<String> temporarilyNotAvailable;
+    private ArrayList<Person> onlyForNewPersons = new ArrayList<Person>();
     protected String flightid;  //this is protected so that the fxml can see it
 
     //kinna like a constructor but is acrivated after the constructor so we can create the obj and then call this method
@@ -89,6 +90,7 @@ public class BookPageController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/newPersonPage.fxml"));
                 Parent root = loader.load();
                 NewPersonPageController newperson = loader.getController();
+                newperson.inject(this);
                 Stage stage = new Stage();
                 stage.setTitle("no other title");
                 stage.setScene(new Scene(root, 500, 500));
@@ -98,6 +100,11 @@ public class BookPageController {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void addPersonToTempList(Person p){
+        onlyForNewPersons.add(p);
+        System.out.println(p);
     }
     private void setClicked(){
         clicked = new boolean[25][4];

@@ -8,12 +8,12 @@
 
 <AnchorPane prefHeight="286.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.NewPersonPageController">
    <children>
-      <TextField layoutX="74.0" layoutY="95.0" promptText="name" />
-      <TextField layoutX="268.0" layoutY="95.0" promptText="email" />
-      <TextField layoutX="74.0" layoutY="148.0" promptText="age" />
-      <TextField layoutX="74.0" layoutY="198.0" promptText="phone number" />
-      <Button layoutX="223.0" layoutY="247.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="46.0" text="next" />
+      <TextField fx:id="name" layoutX="74.0" layoutY="95.0" promptText="name" />
+      <TextField fx:id="email" layoutX="268.0" layoutY="95.0" promptText="email" />
+      <TextField fx:id="age" layoutX="74.0" layoutY="148.0" promptText="age" />
+      <TextField fx:id="phoneNum" layoutX="74.0" layoutY="198.0" promptText="phone number" />
+      <Button fx:id="next" layoutX="223.0" layoutY="247.0" mnemonicParsing="false" onAction="#createPerson" prefHeight="25.0" prefWidth="46.0" text="next" />
       <Label layoutX="74.0" layoutY="44.0" text="Flight number: 144 seat A11" />
-      <TextArea layoutX="268.0" layoutY="148.0" prefHeight="75.0" prefWidth="149.0" promptText="details " />
+      <TextArea fx:id="details" layoutX="268.0" layoutY="148.0" prefHeight="75.0" prefWidth="149.0" promptText="details " />
    </children>
 </AnchorPane>
