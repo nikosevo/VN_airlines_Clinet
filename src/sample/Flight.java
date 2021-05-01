@@ -20,7 +20,7 @@ public class Flight implements Serializable
     private LocalTime depart_time;
     private LocalDate depart_date;
 
-    Flight(String id, String from, String to, LocalTime depart_time, LocalDate depart_date)
+    public Flight(String id, String from, String to, LocalTime depart_time, LocalDate depart_date)
     {
         this.id = id;
         this.from = from;
