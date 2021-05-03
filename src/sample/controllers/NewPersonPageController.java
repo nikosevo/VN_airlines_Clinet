@@ -1,10 +1,13 @@
 package sample.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import sample.Handler;
 import sample.Person;
 
-import java.awt.*;
+
 
 
 public class NewPersonPageController {
@@ -39,6 +42,7 @@ public class NewPersonPageController {
         this.place = place;
     }
     public void createPerson(){
+        //create person
         String p_name = name.getText();
         String p_email = email.getText();
         String p_age = age.getText();
