@@ -1,11 +1,10 @@
 package sample.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import sample.Handler;
 import sample.Person;
+
+import java.awt.*;
 
 
 public class NewPersonPageController {

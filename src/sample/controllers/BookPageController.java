@@ -7,16 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import sample.Handler;
 import sample.Person;
 
-import javax.net.ssl.SNIHostName;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class BookPageController
 {
@@ -28,6 +25,7 @@ public class BookPageController
     private boolean clicked[][];
     private ArrayList<String> notAvailable;
     private ArrayList<String> temporarilyNotAvailable;
+    private ArrayList<Person> onlyForNewPersons = new ArrayList<Person>();
     protected String flightid;  //this is protected so that the fxml can see it
 
     //kinna like a constructor but is acrivated after the constructor so we can create the obj and then call this method
@@ -103,7 +101,7 @@ public class BookPageController
     }
 
     private void newpersonWindow(ArrayList<String> wishList , int i)
-    {
+    {//nothing
         try
         {
 
@@ -124,6 +122,11 @@ public class BookPageController
         }
     }
 
+    public void addPersonToTempList(Person p)
+    {
+        onlyForNewPersons.add(p);
+        System.out.println(p);
+    }
 
     private void setClicked()
     {
