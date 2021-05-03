@@ -91,35 +91,42 @@ public class BookPageController
                 //collect data from user vie the ui
                 //TODO THIS NEED TO BE FIXED FIRSTLY WE TAKE THE INFO FROM THE USER AND PROCEED ONLY WHEN HE HAS FILLED THE WINDOWS
                 //WITH HIS INFO
-                System.out.println(wishlist.size() + "size");
-                for (int i = 0; i < wishlist.size(); i++)
+
+                Stage stage = null;
+                int i = 0;
+                stage = newpersonWindow(wishlist, i);
+                while (i < wishlist.size())
                 {
-                    newpersonWindow(wishlist,i);
+                    if (!stage.isShowing())
+                    {
+                        i++;
+                        System.out.println(stage.isShowing());
+                    }
+
                 }
+                System.out.println("out of while");
             }
         }
     }
 
-    private void newpersonWindow(ArrayList<String> wishList , int i)
+    private Stage newpersonWindow(ArrayList<String> wishList, int i)
     {//nothing
         try
         {
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/newPersonPage.fxml"));
             Parent root = loader.load();
             NewPersonPageController newperson = loader.getController();
-            newperson.initialize(handler , flightid , wishList.get(i));
+            newperson.initialize(handler, flightid, wishList.get(i));
             Stage stage = new Stage();
             stage.setTitle("no other title");
             stage.setScene(new Scene(root, 500, 500));
             stage.show();
-
-
-
+            return stage;
         } catch (IOException e)
         {
             e.printStackTrace();
         }
+        return null;
     }
 
     public void addPersonToTempList(Person p)

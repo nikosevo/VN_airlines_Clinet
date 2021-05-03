@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sample.Handler;
 import sample.Person;
 
@@ -50,6 +51,9 @@ public class NewPersonPageController {
 
         Person p = new Person(p_name,p_email,p_age,p_phoneNum,"696969696969");
         handler.bookPermenantly(flightid,place,p);
+        Stage stage = (Stage) next.getScene().getWindow();
+        stage.close();
+
 
     }
 }
