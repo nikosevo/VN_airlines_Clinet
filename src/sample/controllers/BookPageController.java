@@ -28,7 +28,6 @@ public class BookPageController
     private boolean clicked[][];
     private ArrayList<String> notAvailable;
     private ArrayList<String> temporarilyNotAvailable;
-    private ArrayList<Person> onlyForNewPersons = new ArrayList<Person>();
     protected String flightid;  //this is protected so that the fxml can see it
 
     //kinna like a constructor but is acrivated after the constructor so we can create the obj and then call this method
@@ -125,11 +124,6 @@ public class BookPageController
         }
     }
 
-    public void addPersonToTempList(Person p)
-    {
-        onlyForNewPersons.add(p);
-        System.out.println(p);
-    }
 
     private void setClicked()
     {
