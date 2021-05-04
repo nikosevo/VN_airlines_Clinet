@@ -40,6 +40,16 @@ public class FrontpageController {
     @FXML
     private Button idSearchButton;
 
+    @FXML
+    private TextField name;
+
+    @FXML
+    private TextField flightId;
+
+    @FXML
+    private Button seeInfo;
+
+
     Handler handler = new Handler();
     ArrayList<Flight> tempList = new ArrayList<Flight>();
 
@@ -81,7 +91,6 @@ public class FrontpageController {
     private void updateList(){
         vbox.getChildren().clear();
         //adding manually to list so we konw that this scene into scene is not  bullshiet n acc workds
-        tempList.add(new Flight("120","samos","athens", LocalTime.parse("05:50"),LocalDate.parse("2021-04-24")));
         //somehow  if the list if empty still renders a piece of default string shit todo
         for(Flight f : tempList){
 
@@ -97,6 +106,24 @@ public class FrontpageController {
             }
         }
 
+    }
+    public void seeDetails(){
+        ArrayList<String> details = new ArrayList<>();
+        details = handler.getDetails(name.getText(),flightId.getText());
+        try{
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/detailsPage.fxml"));
+            Parent root = loader.load();
+            DetailsController c = loader.getController();
+            c.initialize(details);
+
+            Stage stage = new Stage();
+            stage.setTitle("notitle");
+            stage.setScene(new Scene(root, 1111, 444));
+            stage.show();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

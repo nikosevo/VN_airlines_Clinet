@@ -99,4 +99,15 @@ public class Handler {
         }
         return an;
     }
+
+    public ArrayList<String> getDetails(String name,String id) {
+
+        try{
+            return fromOperations.flightinfo(name,id);
+        }catch (RemoteException e){
+            e.printStackTrace();
+        }
+        return null;
+
+    }
 }
