@@ -2,8 +2,6 @@ package sample.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import sample.Handler;
-
 
 
 public class FlightController {
