@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import sample.Handler;
 import sample.Person;
 
-import java.util.ArrayList;
+import javax.swing.*;
 
 
 public class NewPersonPageController {
@@ -44,12 +44,29 @@ public class NewPersonPageController {
         this.place = place;
     }
     public void createPerson(){
-        String p_name = name.getText();
-        String p_email = email.getText();
-        String p_age = age.getText();
-        String p_phoneNum = phoneNum.getText();
 
-        Person p = new Person(p_name,p_email,p_age,p_phoneNum,"696969696969");
+        if(name.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please enter your name and surname.", "Name missing" , JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        if(age.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please enter your Age.", "Age missing" , JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        if(email.getText().isEmpty() || !email.getText().contains("@") )
+        {
+            JOptionPane.showMessageDialog(null, "Please enter an email that it is valid.", "Age missing" , JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        if(phoneNum.getText().isEmpty() || phoneNum.getText().length()<10)
+        {
+            JOptionPane.showMessageDialog(null, "Please enter a phone number that it is valid.", "Invalid phone number" , JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        Person p = new Person(name.getText(),email.getText(),age.getText(),phoneNum.getText());
         handler.bookPermenantly(flightid,place,p);
 
         Stage st = (Stage) next.getScene().getWindow();
