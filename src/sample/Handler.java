@@ -2,7 +2,6 @@ package sample;
 
 import javafx.scene.control.Alert;
 import sample.Interfaces.Operations;
-
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;

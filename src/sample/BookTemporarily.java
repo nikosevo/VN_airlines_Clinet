@@ -1,8 +1,6 @@
 package sample;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.logging.Handler;
 
 public class BookTemporarily implements Runnable{
     private ArrayList<String> wishlist;

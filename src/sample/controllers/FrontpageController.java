@@ -7,14 +7,11 @@ import javafx.scene.Scene;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sample.Flight;
 import sample.Handler;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
