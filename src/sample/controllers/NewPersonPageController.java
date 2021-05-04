@@ -4,13 +4,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sample.Handler;
 import sample.Person;
 
-
+import java.util.ArrayList;
 
 
 public class NewPersonPageController {
+
 
     @FXML
     private TextField name;
@@ -49,6 +51,9 @@ public class NewPersonPageController {
 
         Person p = new Person(p_name,p_email,p_age,p_phoneNum,"696969696969");
         handler.bookPermenantly(flightid,place,p);
+
+        Stage st = (Stage) next.getScene().getWindow();
+        st.close();
 
     }
 }
