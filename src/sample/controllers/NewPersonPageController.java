@@ -2,6 +2,7 @@ package sample.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -30,7 +31,13 @@ public class NewPersonPageController {
     private Button next;
 
     @FXML
-    private TextArea details;
+    private Button closeBtn;
+
+    @FXML
+    private Label flightID;
+
+    @FXML
+    private Label seat;
 
     protected Handler handler;
     protected String flightid;
@@ -42,6 +49,28 @@ public class NewPersonPageController {
         this.handler = handler;
         this.flightid = flightid;
         this.place = place;
+
+        String parseFroLabel =place;
+        System.out.println(place);
+        String[] parts = place.split("-");
+        System.out.println(parts);
+        switch (parts[1]){
+            case "1":
+                parseFroLabel = "A" + parts[0];
+                break;
+            case "2":
+                parseFroLabel = "B" + parts[0];
+                break;
+            case  "3":
+                parseFroLabel = "C" + parts[0];
+                break;
+            case "4":
+                parseFroLabel = "D" + parts[0];
+                break;
+        }
+
+        flightID.setText(flightid);
+        seat.setText(parseFroLabel);
     }
     public void createPerson(){
 
@@ -72,6 +101,10 @@ public class NewPersonPageController {
         Stage st = (Stage) next.getScene().getWindow();
         st.close();
 
+    }
+    public void close(){
+        Stage st = (Stage) closeBtn.getScene().getWindow();
+        st.close();
     }
 
 }

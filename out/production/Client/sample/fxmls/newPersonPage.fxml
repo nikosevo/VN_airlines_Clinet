@@ -5,15 +5,43 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="286.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.NewPersonPageController">
+<AnchorPane prefHeight="300.0" prefWidth="420.0" style="-fx-background-color: #444;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.NewPersonPageController">
    <children>
-      <TextField fx:id="name" layoutX="74.0" layoutY="95.0" promptText="name" />
-      <TextField fx:id="email" layoutX="268.0" layoutY="95.0" promptText="email" />
-      <TextField fx:id="age" layoutX="74.0" layoutY="148.0" promptText="age" />
-      <TextField fx:id="phoneNum" layoutX="74.0" layoutY="198.0" promptText="phone number" />
-      <Button fx:id="next" layoutX="223.0" layoutY="247.0" mnemonicParsing="false" onAction="#createPerson" prefHeight="25.0" prefWidth="46.0" text="next" />
-      <Label layoutX="74.0" layoutY="44.0" text="Flight number: 144 seat A11" />
-      <TextArea fx:id="details" layoutX="268.0" layoutY="148.0" prefHeight="75.0" prefWidth="149.0" promptText="details " />
+      <TextField fx:id="name" layoutX="40.0" layoutY="95.0" promptText="name" />
+      <TextField fx:id="email" layoutX="234.0" layoutY="95.0" promptText="email" />
+      <TextField fx:id="age" layoutX="40.0" layoutY="148.0" promptText="age" />
+      <TextField fx:id="phoneNum" layoutX="40.0" layoutY="198.0" promptText="phone number" />
+      <Label layoutX="40.0" layoutY="23.0" text="Flight:" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="22.0" />
+         </font></Label>
+      <TextArea fx:id="details" layoutX="234.0" layoutY="148.0" prefHeight="75.0" prefWidth="149.0" promptText="details " />
+      <Button fx:id="closeBtn" layoutX="360.0" layoutY="21.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: red;" text="x" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Black" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="next" layoutX="336.0" layoutY="257.0" mnemonicParsing="false" onAction="#createPerson" style="-fx-background-color: #6FA521;" text="next" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Black" size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="40.0" layoutY="59.0" text="seat:" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="flightID" layoutX="115.0" layoutY="23.0" text="sdfg" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="seat" layoutX="115.0" layoutY="59.0" text="sdfg" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

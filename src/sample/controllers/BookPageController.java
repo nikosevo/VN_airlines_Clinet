@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import sample.Handler;
 import sample.Person;
@@ -135,7 +136,8 @@ public class BookPageController implements Initializable
     }
 
     private void newpersonWindow(ArrayList<String> wishList , int i)
-    {//nothing
+    {
+
         try
         {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/newPersonPage.fxml"));
@@ -144,7 +146,8 @@ public class BookPageController implements Initializable
             newperson.initialize(handler , flightid , wishList.get(i));
             Stage stage = new Stage();
             stage.setTitle("no other title");
-            stage.setScene(new Scene(root, 500, 500));
+            stage.setScene(new Scene(root, 420 , 300));
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
 
         } catch (IOException e)

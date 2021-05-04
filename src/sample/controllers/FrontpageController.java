@@ -101,7 +101,8 @@ public class FrontpageController {
                 FlightController fc = loader.getController();
                 SubScene flight = new SubScene(root,800,50);
                 vbox.getChildren().add(flight);
-                fc.setLabels(f.getId());
+                fc.initialize(f.getId() , handler);
+                fc.setLabels(f.getfrom(),f.getTo(),f.getNumOfSeats(),f.getCost());
             } catch (IOException e) {
                 e.printStackTrace();
             }
