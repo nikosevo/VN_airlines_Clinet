@@ -21,6 +21,7 @@ import java.io.IOException;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 
@@ -89,6 +90,9 @@ public class BookPageController implements Initializable
                         temp_btn.setStyle("-fx-background-color: yellow");
                     }
                 }
+                if(clicked[i-1][j-1] == true)
+                    temp_btn.setStyle("-fx-background-color: orange");
+
             }
         }
     }
@@ -115,6 +119,11 @@ public class BookPageController implements Initializable
                 //TODO THIS NEED TO BE FIXED FIRSTLY WE TAKE THE INFO FROM THE USER AND PROCEED ONLY WHEN HE HAS FILLED THE WINDOWS
                 //WITH HIS INFO
                 System.out.println(wishlist.size() + "size");
+                for(int i = 0 ; i < 25 ; i++){
+                    for(int j = 0 ; j < 4 ; j++){
+                        clicked[i][j] = false;
+                    }
+                }
                 setGrid();
                 for (int i = 0; i < wishlist.size(); i++)
                 {
