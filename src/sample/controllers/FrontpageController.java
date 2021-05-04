@@ -10,6 +10,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import sample.Flight;
 import sample.Handler;
 import java.io.IOException;
@@ -118,8 +119,9 @@ public class FrontpageController {
             c.initialize(details);
 
             Stage stage = new Stage();
-            stage.setTitle("notitle");
-            stage.setScene(new Scene(root, 1111, 444));
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root, 371, 622));
+            stage.setResizable(false);
             stage.show();
         }catch (IOException e) {
             e.printStackTrace();
