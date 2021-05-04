@@ -73,4 +73,5 @@ public class NewPersonPageController {
         st.close();
 
     }
+
 }

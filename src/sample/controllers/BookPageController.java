@@ -28,6 +28,9 @@ public class BookPageController implements Initializable
 
     @FXML
     private GridPane grid;
+    @FXML
+    private Button cancelBtn;
+
 
     Handler handler;
     private boolean clicked[][];
@@ -150,11 +153,6 @@ public class BookPageController implements Initializable
         }
     }
 
-    public void addPersonToTempList(Person p)
-    {
-        onlyForNewPersons.add(p);
-        System.out.println(p);
-    }
 
     private void setClicked()
     {
@@ -214,5 +212,8 @@ public class BookPageController implements Initializable
 
     }
 
-
+    public void exit(){
+        Stage st = (Stage) cancelBtn.getScene().getWindow();
+        st.close();
+    }
 }
