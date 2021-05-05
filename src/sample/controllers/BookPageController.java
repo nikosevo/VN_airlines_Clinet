@@ -40,6 +40,8 @@ public class BookPageController implements Initializable
     private ArrayList<Person> onlyForNewPersons = new ArrayList<Person>();
     protected String flightid;  //this is protected so that the fxml can see it
     private boolean needWindowForNewPerson = false;
+    private int openWindows = 0;
+    ArrayList<String> tmpCauseWeAreNoobs;
 
     //kinna like a constructor but is acrivated after the constructor so we can create the obj and then call this method
     @Override
@@ -61,8 +63,6 @@ public class BookPageController implements Initializable
         setGrid();
 
     }
-
-
 
     public void setGrid()
     {
@@ -120,7 +120,6 @@ public class BookPageController implements Initializable
                 //collect data from user vie the ui
                 //TODO THIS NEED TO BE FIXED FIRSTLY WE TAKE THE INFO FROM THE USER AND PROCEED ONLY WHEN HE HAS FILLED THE WINDOWS
                 //WITH HIS INFO
-                System.out.println(wishlist.size() + "size");
                 for(int i = 0 ; i < 25 ; i++){
                     for(int j = 0 ; j < 4 ; j++){
                         clicked[i][j] = false;
@@ -131,7 +130,18 @@ public class BookPageController implements Initializable
                 {
                     newpersonWindow(wishlist,i);
                 }
+                tmpCauseWeAreNoobs = wishlist;
+                openWindows = wishlist.size();
+                System.out.println(openWindows);
             }
+        }
+    }
+
+    public void closeWindow(){
+        openWindows--;
+        System.out.println(openWindows);
+        if(openWindows == 0){
+            handler.remove(flightid,tmpCauseWeAreNoobs);
         }
     }
 
@@ -143,7 +153,7 @@ public class BookPageController implements Initializable
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/newPersonPage.fxml"));
             Parent root = loader.load();
             NewPersonPageController newperson = loader.getController();
-            newperson.initialize(handler , flightid , wishList.get(i));
+            newperson.initialize(handler , flightid , wishList.get(i),this);
             Stage stage = new Stage();
             stage.setTitle("no other title");
             stage.setScene(new Scene(root, 420 , 300));

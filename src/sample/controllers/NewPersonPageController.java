@@ -10,6 +10,7 @@ import sample.Handler;
 import sample.Person;
 
 import javax.swing.*;
+import java.awt.print.Book;
 
 
 public class NewPersonPageController {
@@ -42,18 +43,18 @@ public class NewPersonPageController {
     protected Handler handler;
     protected String flightid;
     protected String place;
+    protected BookPageController bk;
 
     @FXML
-    public void initialize(Handler handler, String flightid,String place)
+    public void initialize(Handler handler, String flightid, String place, BookPageController bk)
     {
         this.handler = handler;
         this.flightid = flightid;
         this.place = place;
+        this.bk = bk;
 
         String parseFroLabel =place;
-        System.out.println(place);
         String[] parts = place.split("-");
-        System.out.println(parts);
         switch (parts[1]){
             case "1":
                 parseFroLabel = "A" + parts[0];
@@ -97,6 +98,7 @@ public class NewPersonPageController {
 
         Person p = new Person(name.getText(),email.getText(),age.getText(),phoneNum.getText());
         handler.bookPermenantly(flightid,place,p);
+        bk.closeWindow();
 
         Stage st = (Stage) next.getScene().getWindow();
         st.close();
@@ -104,6 +106,7 @@ public class NewPersonPageController {
     }
     public void close(){
         Stage st = (Stage) closeBtn.getScene().getWindow();
+        bk.closeWindow();
         st.close();
     }
 

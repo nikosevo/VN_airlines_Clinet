@@ -1,5 +1,6 @@
 package sample;
 
+import java.awt.print.Book;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -40,7 +41,7 @@ public class Flight implements Serializable {
 
     public boolean checkseat(int x, int y) { return seats[x][y] == null; }
 
-    public void setpersonto(int x, int y, Person p) { this.seats[x][y] = p;}
+    public void setpersonto(int x, int y, Person p) { this.seats[x][y] = p; seatsAvailable--;}
 
     public Person checkreservation(String name) {
         for (int i = 0; i < 25; i++) {
@@ -73,8 +74,9 @@ public class Flight implements Serializable {
     }
 
     public void removeThread(ArrayList<String> wishlist) {
-        tempOccupied.removeIf(b -> b.getWishlist().equals(wishlist));
-        System.out.println("removed");
+        for(BookTemporarily bt : tempOccupied)
+            if(bt.getWishlist().equals(wishlist))
+                bt.stop();
     }
 
     public ArrayList<String> getTempOccupied() {
