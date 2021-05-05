@@ -2,17 +2,26 @@ package sample;
 
 import javafx.scene.control.Alert;
 import sample.Interfaces.Operations;
+
+import javax.crypto.*;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Base64;
 
 public class Handler {
 
     //this is our variable where we will story our connection to the server
     Operations fromOperations;
+
     public Handler() {
         try {
             fromOperations = (Operations) Naming.lookup("rmi://localhost:1099/valnik");
@@ -25,7 +34,7 @@ public class Handler {
         }
     }
 
-    public Flight getFlight(String id){
+    public Flight getFlight(String id) {
         Flight f = null;
         try {
             f = fromOperations.getFlightId(id);
@@ -36,10 +45,10 @@ public class Handler {
     }
 
     //since this method is called from the controller we need to return the list
-    public ArrayList<Flight> getFlightsWith(String cityFrom, String cityTo,LocalDate date) {
+    public ArrayList<Flight> getFlightsWith(String cityFrom, String cityTo, LocalDate date) {
         ArrayList<Flight> tempList = new ArrayList<Flight>();
         try {
-             tempList = fromOperations.getFlightWith(cityFrom, cityTo, date);
+            tempList = fromOperations.getFlightWith(cityFrom, cityTo, date);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -47,25 +56,25 @@ public class Handler {
 
     }
 
-   public void bookPermenantly(String flightId , String seat ,Person person ){
+    public void bookPermenantly(String flightId, String seat, Person person) {
         boolean an = false;
         try {
-            an = fromOperations.booknow(flightId,seat,person);
+            an = fromOperations.booknow(flightId, seat, person);
             System.out.println(an);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        if(an == false){
+        if (an == false) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Alert Message");
             alert.show();
         }
     }
 
-    public boolean bookTemporarily(String flightId , ArrayList<String> wishList){
+    public boolean bookTemporarily(String flightId, ArrayList<String> wishList) {
         boolean an = false;
-        try{
-            an = fromOperations.bookTemporarily(flightId,wishList);
+        try {
+            an = fromOperations.bookTemporarily(flightId, wishList);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -82,7 +91,7 @@ public class Handler {
     }
 
     public ArrayList<String> getTempNonAvailable(String flightid) {
-        try{
+        try {
             return fromOperations.tempOccupiedSeats(flightid);
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -92,19 +101,19 @@ public class Handler {
 
     public boolean checkAvailability(String flightId, ArrayList<String> wishlist) {
         boolean an = false;
-        try{
-            an = fromOperations.checkAvailability(flightId,wishlist);
-        }catch (RemoteException e){
+        try {
+            an = fromOperations.checkAvailability(flightId, wishlist);
+        } catch (RemoteException e) {
             e.printStackTrace();
         }
         return an;
     }
 
-    public ArrayList<String> getDetails(String name,String id) {
+    public ArrayList<String> getDetails(String name, String id) {
 
-        try{
-            return fromOperations.flightinfo(name,id);
-        }catch (RemoteException e){
+        try {
+            return fromOperations.flightinfo(name, id);
+        } catch (RemoteException e) {
             e.printStackTrace();
         }
         return null;
@@ -113,9 +122,10 @@ public class Handler {
 
     public void remove(String flightid, ArrayList<String> wishlist) {
         try {
-            fromOperations.removeThread(flightid ,wishlist);
+            fromOperations.removeThread(flightid, wishlist);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
     }
+
 }
