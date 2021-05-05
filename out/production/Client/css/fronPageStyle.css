@@ -1,9 +1,6 @@
-.button{
-    -fx-background-color: 
-
-    linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
-    linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
-    -fx-background-radius: 30;
+.buttons{
+    -fx-background-color: #4ACAC5;
+    -fx-background-radius: 5;
     -fx-background-insets: 0,1,2,3,0;
     -fx-text-fill: #654b00;
     -fx-font-weight: bold;
@@ -22,3 +19,45 @@
     -fx-border-width: 0 0 1 0; 
     -fx-background-color: transparent;
   }
+
+#scrollpane{
+  -fx-border-color: #444;
+  -fx-background:#444;
+}
+
+.scroll-bar:vertical .track{
+    -fx-background-color: #444;
+    -fx-border-color: #444;
+    -fx-background-radius : 2.0em;
+    -fx-border-radius :2.0em;
+}
+
+
+.scroll-bar:vertical .increment-button  {
+    -fx-background-color :#444;
+    -fx-background-radius : 0.0em;
+    -fx-padding :0.0 5.0 0.0 0.0;
+
+}
+
+.scroll-bar  {
+    -fx-background-color:#444;
+}
+.scroll-bar > .increment-button > .increment-arrow,
+.scroll-bar > .decrement-button > .decrement-arrow {
+    -fx-background-color: #F49361;
+}
+
+
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color : #4ACAC5;
+    
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color : #439491;
+    -fx-background-insets : 2.0, 0.0, 0.0;
+    -fx-background-radius : 2.0em;
+    -fx-cursor : pointer;
+}
