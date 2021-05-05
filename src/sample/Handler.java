@@ -110,4 +110,12 @@ public class Handler {
         return null;
 
     }
+
+    public void remove(String flightid, ArrayList<String> wishlist) {
+        try {
+            fromOperations.removeThread(flightid ,wishlist);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 }

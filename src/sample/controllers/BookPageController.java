@@ -131,6 +131,7 @@ public class BookPageController implements Initializable
                 {
                     newpersonWindow(wishlist,i);
                 }
+                handler.remove(flightid , wishlist);
             }
         }
     }
