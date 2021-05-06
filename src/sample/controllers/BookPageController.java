@@ -158,6 +158,7 @@ public class BookPageController implements Initializable
             stage.setTitle("no other title");
             stage.setScene(new Scene(root, 420 , 300));
             stage.initStyle(StageStyle.UNDECORATED);
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e)

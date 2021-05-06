@@ -26,37 +26,37 @@
             <Font name="Tw Cen MT" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="to" layoutX="259.0" layoutY="3.0" prefHeight="50.0" prefWidth="58.0" text="samos" textFill="WHITE">
+      <Label fx:id="to" layoutX="284.0" layoutY="3.0" prefHeight="50.0" prefWidth="58.0" text="samos" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="221.0" layoutY="3.0" prefHeight="50.0" text="To:" textFill="#fdfdfd">
+      <Label layoutX="246.0" layoutY="3.0" prefHeight="50.0" text="To:" textFill="#fdfdfd">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="337.0" layoutY="3.0" prefHeight="50.0" text="seats:" textFill="WHITE">
+      <Label layoutX="412.0" layoutY="3.0" prefHeight="50.0" text="seats:" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="449.0" layoutY="3.0" prefHeight="50.0" prefWidth="42.0" text="cost:" textFill="#fdfdfd">
+      <Label layoutX="527.0" layoutY="3.0" prefHeight="50.0" prefWidth="42.0" text="cost:" textFill="#fdfdfd">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="545.0" layoutY="3.0" prefHeight="50.0" text=" " textFill="WHITE">
+      <Label layoutX="623.0" layoutY="3.0" prefHeight="50.0" text=" " textFill="WHITE">
          <font>
             <Font name="Tw Cen MT" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="numOfSeats" layoutX="398.0" layoutY="3.0" prefHeight="50.0" text="43" textFill="WHITE">
+      <Label fx:id="numOfSeats" layoutX="473.0" layoutY="3.0" prefHeight="50.0" text="43" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="cost" layoutX="498.0" layoutY="3.0" prefHeight="50.0" text="100" textFill="WHITE">
+      <Label fx:id="cost" layoutX="576.0" layoutY="3.0" prefHeight="50.0" text="100" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT" size="24.0" />
          </font>

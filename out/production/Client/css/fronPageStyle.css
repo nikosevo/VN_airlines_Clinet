@@ -1,24 +1,62 @@
+@font-face {
+    font-family: openSans;
+    src: url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+}
+
 .buttons{
     -fx-background-color: #4ACAC5;
     -fx-background-radius: 5;
     -fx-background-insets: 0,1,2,3,0;
-    -fx-text-fill: #654b00;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
     -fx-padding: 10 20 10 20;
 }
 
+.button:hover{
+    -fx-background-color: #51e2dd;
+    -fx-cursor: hand;
+}
+
+.labels{
+    -fx-text-fill: white;
+    -fx-font-family: "Tw Cen MT",Arial,sans-serif; 
+    -fx-font-size:20px; 
+}
+.date-picker > .text-field{
+    -fx-border-width: 0; 
+    -fx-text-fill: #444;
+
+}
+.date-picker:editable > .arrow-button > * {
+    -fx-opacity: 1; /* Set the node in the button to be visible */
+}
+
+.date-picker > .arrow-button {
+    -fx-background-color: #51e2dd;
+}
+
 
 .text-field {
+    -fx-text-fill: white;
     -fx-border-color: #4ACAC5;
     -fx-border-width: 0 0 1 0; 
     -fx-background-color: transparent;
   }
-.text-field:focused {
+.text-field:focused  {
     -fx-border-color: #E76750;
     -fx-border-width: 0 0 1 0; 
     -fx-background-color: transparent;
   }
+
+  .text-field:focused  .labels{
+      -fx-font-size:10px;
+      -fx-text-fill: red;
+  }
+
+#datePicker{
+    -fx-background-color:transparent;
+}
 
 #scrollpane{
   -fx-border-color: #444;

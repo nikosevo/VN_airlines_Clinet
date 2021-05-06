@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
@@ -14,7 +15,10 @@ public class Main extends Application {
         //root.getStylesheets().add(getClass().getResource("../css/fronPageStyle.css").toExternalForm());
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 1110, 616 ));
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setResizable(false);
         primaryStage.show();
+
     }
 
 

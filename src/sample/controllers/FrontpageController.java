@@ -1,5 +1,6 @@
 package sample.controllers;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,14 +9,16 @@ import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import sample.Flight;
 import sample.Handler;
+
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class FrontpageController {
@@ -39,7 +42,7 @@ public class FrontpageController {
     private TextField idSearch;
 
     @FXML
-    private Button idSearchButton;
+    private Button exitBtn;
 
     @FXML
     private TextField name;
@@ -50,29 +53,17 @@ public class FrontpageController {
     @FXML
     private Button seeInfo;
 
+    @FXML
+    private AnchorPane frontPanel;
 
-    Handler handler = new Handler();
-    ArrayList<Flight> tempList = new ArrayList<Flight>();
 
 
-    public void bookFlight(){
+    private Handler handler = new Handler();
+    private ArrayList<Flight> tempList = new ArrayList<Flight>();
 
-        try {
+    private double positionX;
+    private double positionY;
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/bookPage.fxml"));
-            Parent root = loader.load();
-            BookPageController c = loader.getController();
-            c.initialize(handler,idSearch.getText());
-            Stage stage = new Stage();
-            stage.setTitle("notitle");
-            stage.setScene(new Scene(root, 1111, 444));
-            stage.show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     public void searchWithId(){
         String flightId = idSearch.getText();
@@ -129,6 +120,10 @@ public class FrontpageController {
         }
     }
 
+    public void exit(){
+        Stage st = (Stage) exitBtn.getScene().getWindow();
+        st.close();
+    }
 
 
 }

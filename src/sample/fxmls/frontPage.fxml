@@ -5,34 +5,38 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="1110.0" style="-fx-background-color: #444;" stylesheets="@../../css/fronPageStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.FrontpageController">
+<AnchorPane style="-fx-background-color: #444;" stylesheets="@../../css/fronPageStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.FrontpageController">
    <children>
-      <DatePicker fx:id="datePicker" layoutX="337.0" layoutY="84.0" prefHeight="25.0" prefWidth="149.0" promptText="select date" style="-fx-background-color: transparent;" />
-      <TextField fx:id="fromText" layoutX="557.0" layoutY="84.0" promptText="From" styleClass="text-field" />
-      <TextField fx:id="toText" layoutX="759.0" layoutY="84.0" promptText="To" />
-      <Button fx:id="flyBtn" layoutX="957.0" layoutY="70.0" mnemonicParsing="false" onAction="#search" prefHeight="18.0" prefWidth="99.0" styleClass="buttons" text="search" />
-      <TextField fx:id="idSearch" layoutX="759.0" layoutY="175.0" promptText="search with id " />
-      <Button fx:id="idSearchButton" layoutX="957.0" layoutY="161.0" mnemonicParsing="false" onAction="#searchWithId" prefHeight="34.0" prefWidth="99.0" styleClass="buttons" text="id search" />
       <AnchorPane prefHeight="616.0" prefWidth="277.0" style="-fx-background-color: #333;">
          <children>
-            <TextField fx:id="name" layoutX="66.0" layoutY="398.0" promptText="Name" />
-            <TextField fx:id="flightId" layoutX="66.0" layoutY="461.0" promptText="Flight Number" />
             <Button fx:id="seeInfo" layoutX="65.0" layoutY="528.0" mnemonicParsing="false" onAction="#seeDetails" prefHeight="42.0" prefWidth="149.0" styleClass="buttons" text="see your flight" textFill="WHITE" />
-            <Label layoutX="47.0" layoutY="43.0" prefHeight="67.0" prefWidth="185.0" text="VN airlines" textFill="WHITE">
+            <TextField fx:id="name" layoutX="64.0" layoutY="354.0" />
+            <TextField fx:id="flightId" layoutX="65.0" layoutY="442.0" />
+            <Label layoutX="64.0" layoutY="328.0" prefHeight="26.0" prefWidth="56.0" styleClass="labels" text="Name:" textFill="#f8f8f8">
                <font>
-                  <Font name="Bauhaus 93" size="39.0" />
+                  <Font name="Segoe Print" size="40.0" />
                </font>
-               <effect>
-                  <Bloom threshold="0.39" />
-               </effect>
             </Label>
+            <Label layoutX="64.0" layoutY="419.0" styleClass="labels" text="Flight number:" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="40.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assets/Asset%203.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
+      <DatePicker fx:id="datePicker" layoutX="360.0" layoutY="85.0" prefHeight="26.0" prefWidth="109.0" />
+      <TextField fx:id="fromText" layoutX="557.0" layoutY="84.0" styleClass="text-field" />
+      <TextField fx:id="toText" layoutX="759.0" layoutY="84.0" />
+      <Button fx:id="flyBtn" layoutX="957.0" layoutY="70.0" mnemonicParsing="false" onAction="#search" prefHeight="18.0" prefWidth="99.0" styleClass="buttons" text="search" />
+      <TextField fx:id="idSearch" layoutX="759.0" layoutY="175.0" />
+      <Button fx:id="idSearchButton" layoutX="957.0" layoutY="161.0" mnemonicParsing="false" onAction="#searchWithId" prefHeight="34.0" prefWidth="99.0" styleClass="buttons" text="id search" />
       <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" layoutX="318.0" layoutY="250.0" prefHeight="327.0" prefWidth="748.0" style="-fx-background-color: #444;">
          <content>
           <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="695.0" prefWidth="741.0" style="-fx-background-color: #444;">
@@ -42,5 +46,14 @@
             </AnchorPane>
          </content>
       </ScrollPane>
+      <Label layoutX="318.0" layoutY="86.0" styleClass="labels" text="select a date:" />
+      <Label layoutX="557.0" layoutY="59.0" styleClass="labels" text="From:" />
+      <Label layoutX="759.0" layoutY="59.0" styleClass="labels" text="Destination:" />
+      <Label layoutX="759.0" layoutY="216.0" style="-fx-font-size: 14;" styleClass="labels" text="If you already know the number of the flight" />
+      <Button fx:id="exitBtn" layoutX="1048.0" layoutY="14.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;" text="X" textFill="#eb0303">
+         <font>
+            <Font name="Segoe UI Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
