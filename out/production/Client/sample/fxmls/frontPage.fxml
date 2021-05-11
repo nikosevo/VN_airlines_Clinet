@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMouseDragged="#drag" onMousePressed="#mousePressed" style="-fx-background-color: #444;" stylesheets="@../../css/fronPageStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.FrontpageController">
+<AnchorPane style="-fx-background-color: #444;" stylesheets="@../../css/fronPageStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.FrontpageController">
    <children>
-      <AnchorPane fx:id="frontPanel" onMouseDragged="#drag" onMousePressed="#mousePressed" prefHeight="616.0" prefWidth="277.0" style="-fx-background-color: #333;">
+      <AnchorPane prefHeight="616.0" prefWidth="277.0" style="-fx-background-color: #333;">
          <children>
             <Button fx:id="seeInfo" layoutX="65.0" layoutY="528.0" mnemonicParsing="false" onAction="#seeDetails" prefHeight="42.0" prefWidth="149.0" styleClass="buttons" text="see your flight" textFill="WHITE" />
             <TextField fx:id="name" layoutX="64.0" layoutY="354.0" />
@@ -55,6 +55,5 @@
             <Font name="Segoe UI Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="move" layoutX="553.0" layoutY="19.0" mnemonicParsing="false" onMouseDragged="#drag" onMousePressed="#mousePressed" text="Button" />
    </children>
 </AnchorPane>

@@ -87,6 +87,8 @@ public class FrontpageController {
         for(Flight f : tempList){
 
             try {
+                if(f.getId() == null)
+                    return;
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/flightComponent.fxml"));
                 Parent root = loader.load();
                 FlightController fc = loader.getController();
